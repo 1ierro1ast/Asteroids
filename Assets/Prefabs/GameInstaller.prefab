@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5928118073386302150}
   - component: {fileID: 5928118073386302169}
   m_Layer: 0
-  m_Name: LocationInstaller
+  m_Name: GameInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa528b5e4b82534596db4d3620fbd1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _game: {fileID: 6550274374493174313, guid: b988756383590b349b80b655af31310b, type: 3}
+  _coroutineRunner: {fileID: 6910578029317338074, guid: 73257d6e423435042acda3ddb9a6cdd3, type: 3}

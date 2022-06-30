@@ -17,6 +17,7 @@ namespace CodeBase.Infrastructure.GameFlow.States
 
         public void Enter()
         {
+            
         }
     }
 }

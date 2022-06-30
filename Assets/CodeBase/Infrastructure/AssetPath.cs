@@ -1,6 +1,6 @@
 ﻿namespace CodeBase.Infrastructure
 {
-    public class AssetPath
+    public static class AssetPath
     {
         public const string MenuPopupPath = "Ui/Popups/MenuPopup";
         public const string OverlayPopupPath = "Ui/Popups/OverlayPopup";
