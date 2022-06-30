@@ -2,7 +2,7 @@
 
 namespace CodeBase.Infrastructure.Services
 {
-    public class GameVariables : IGameVariables
+    public sealed class GameVariables : IGameVariables
     {
         private readonly ISaveLoadService _saveLoadService;
         

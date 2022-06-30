@@ -16,17 +16,17 @@ namespace CodeBase.Infrastructure.Factories
         
         public OverlayPopup CreateOverlayPopup()
         {
-            throw new System.NotImplementedException();
+            return _assetProvider.Instantiate<OverlayPopup>(AssetPath.OverlayPopupPath);
         }
 
         public ResultPopup CreateResultPopup()
         {
-            throw new System.NotImplementedException();
+            return _assetProvider.Instantiate<ResultPopup>(AssetPath.ResultPopupPath);
         }
 
         public MenuPopup CreateMenuPopup()
         {
-            throw new System.NotImplementedException();
+            return _assetProvider.Instantiate<MenuPopup>(AssetPath.MenuPopupPath);
         }
     }
 }

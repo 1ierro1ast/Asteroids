@@ -14,7 +14,6 @@ namespace CodeBase.Infrastructure.GameFlow.States
         public void Exit()
         {
         }
-
         public void Enter()
         {
         }

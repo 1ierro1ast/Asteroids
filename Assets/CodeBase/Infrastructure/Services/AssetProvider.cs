@@ -2,7 +2,7 @@
 
 namespace CodeBase.Infrastructure.Services
 {
-    public class AssetProvider : IAssetProvider
+    public sealed class AssetProvider : IAssetProvider
     {
         public GameObject Instantiate(string path)
         {

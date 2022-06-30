@@ -24,7 +24,7 @@ namespace CodeBase.Infrastructure
 
         private void BindSaveLoadService()
         {
-            Container.Bind<ISaveLoadService>().AsSingle().NonLazy();
+            Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle().NonLazy();
         }
     }
 }

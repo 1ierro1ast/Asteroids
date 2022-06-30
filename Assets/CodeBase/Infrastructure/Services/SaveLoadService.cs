@@ -2,7 +2,7 @@
 
 namespace CodeBase.Infrastructure.Services
 {
-    public class SaveLoadService : ISaveLoadService
+    public sealed class SaveLoadService : ISaveLoadService
     {
         public void SaveInt(string saveKey, int value)
         {
