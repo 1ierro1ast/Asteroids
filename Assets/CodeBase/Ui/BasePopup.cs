@@ -1,4 +1,3 @@
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 namespace CodeBase.Ui
@@ -6,11 +5,11 @@ namespace CodeBase.Ui
     public abstract class BasePopup : MonoBehaviour
     {
         [SerializeField] private Animator[] _animators;
-        
+
         private bool _isEnabled;
-        
-        private static readonly int OpenTrigger = Animator.StringToHash("Open");
-        private static readonly int CloseTrigger = Animator.StringToHash("Close");
+
+        private static readonly int OpenTrigger = Animator.StringToHash("Show");
+        private static readonly int CloseTrigger = Animator.StringToHash("Hide");
 
         private void Awake()
         {
@@ -25,19 +24,17 @@ namespace CodeBase.Ui
         protected virtual void OnUpdate()
         {
         }
-        
+
         protected virtual void OnInitialization()
         {
         }
 
         protected virtual void OnClose()
         {
-            throw new System.NotImplementedException();
         }
 
         protected virtual void OnOpen()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Open()
@@ -46,7 +43,7 @@ namespace CodeBase.Ui
             foreach (var animator in _animators)
             {
                 animator.SetTrigger(OpenTrigger);
-            }            
+            }
         }
 
         public void Close()

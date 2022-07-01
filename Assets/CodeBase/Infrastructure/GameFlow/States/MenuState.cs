@@ -10,15 +10,16 @@ namespace CodeBase.Infrastructure.GameFlow.States
     public class MenuState : IState
     {
         private readonly GameStateMachine _gameStateMachine;
-        [Inject] private IUiFactory _uiFactory;
+        private readonly IUiFactory _uiFactory;
         private readonly ISceneLoader _sceneLoader;
 
         private MenuPopup _menuPopup;
 
-        public MenuState(GameStateMachine gameStateMachine, ISceneLoader sceneLoader)
+        public MenuState(GameStateMachine gameStateMachine, ISceneLoader sceneLoader, IUiFactory uiFactory)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
+            _uiFactory = uiFactory;
         }
 
         public void Exit()
@@ -27,7 +28,6 @@ namespace CodeBase.Infrastructure.GameFlow.States
 
         public void Enter()
         {
-            Debug.Log(_sceneLoader == null);
             _sceneLoader.LoadScene("MenuScene", onLoaded: LinkStartButton);
         }
 

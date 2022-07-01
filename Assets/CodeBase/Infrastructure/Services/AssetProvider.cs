@@ -22,6 +22,21 @@ namespace CodeBase.Infrastructure.Services
             return Object.Instantiate(prefab, parent);
         }
 
+        public GameObject Instantiate(GameObject prefab)
+        {
+            return Object.Instantiate(prefab);
+        }
+
+        public GameObject Instantiate(GameObject prefab, Vector3 at)
+        {
+            return Object.Instantiate(prefab, at, Quaternion.identity);
+        }
+
+        public GameObject Instantiate(GameObject prefab, Transform parent)
+        {
+            return Object.Instantiate(prefab, parent);
+        }
+
         public T Instantiate<T>(string path) where T : Object
         {
             var prefab = Resources.Load<T>(path);
@@ -37,6 +52,21 @@ namespace CodeBase.Infrastructure.Services
         public T Instantiate<T>(string path, Transform parent) where T : Object
         {
             var prefab = Resources.Load<T>(path);
+            return Object.Instantiate(prefab, parent);
+        }
+
+        public T Instantiate<T>(T prefab) where T : Object
+        {
+            return Object.Instantiate(prefab);
+        }
+
+        public T Instantiate<T>(T prefab, Vector3 at) where T : Object
+        {
+            return Object.Instantiate(prefab, at, Quaternion.identity);
+        }
+
+        public T Instantiate<T>(T prefab, Transform parent) where T : Object
+        {
             return Object.Instantiate(prefab, parent);
         }
 

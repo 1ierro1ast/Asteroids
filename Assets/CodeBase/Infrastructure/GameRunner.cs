@@ -5,9 +5,9 @@ using Zenject;
 
 namespace CodeBase.Infrastructure
 {
-    public class GameRunner : IInitializable
+    public sealed class GameRunner : IInitializable
     {
-        private GameStateMachine _gameStateMachine;
+        private readonly GameStateMachine _gameStateMachine;
 
         [Inject] 
         public GameRunner(BaseStateMachine baseStateMachine)

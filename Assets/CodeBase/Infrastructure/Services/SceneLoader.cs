@@ -6,7 +6,7 @@ using Zenject;
 
 namespace CodeBase.Infrastructure.Services
 {
-    public class SceneLoader : ISceneLoader
+    public sealed class SceneLoader : ISceneLoader
     {
         [Inject] private readonly ICoroutineRunner _coroutineRunner;
 
@@ -37,7 +37,6 @@ namespace CodeBase.Infrastructure.Services
 
         public void Tick()
         {
-            Debug.Log("tick");
         }
     }
 }
