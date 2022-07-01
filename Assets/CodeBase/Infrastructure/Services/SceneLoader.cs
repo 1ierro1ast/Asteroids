@@ -34,5 +34,10 @@ namespace CodeBase.Infrastructure.Services
 
             onLoaded?.Invoke();
         }
+
+        public void Tick()
+        {
+            Debug.Log("tick");
+        }
     }
 }

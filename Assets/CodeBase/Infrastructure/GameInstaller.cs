@@ -2,14 +2,14 @@ using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.GameFlow;
 using CodeBase.Infrastructure.GameFlow.States;
 using CodeBase.Infrastructure.Services;
-using UnityEngine;
+using CodeBase.Infrastructure.StateMachine;
 using Zenject;
 
 namespace CodeBase.Infrastructure
 {
-    public class GameInstaller : MonoInstaller
+    public class GameInstaller : MonoInstaller, ICoroutineRunner
     {
-        [SerializeField] private CoroutineRunner _coroutineRunner;
+        private GameStateMachine _gameStateMachine;
 
         public override void InstallBindings()
         {
@@ -20,9 +20,16 @@ namespace CodeBase.Infrastructure
 
             BindCoroutineRunner();
             BindSceneLoader();
+            
             BindGameStateMachine();
+            BindGameRunner();
         }
-        
+
+        private void BindGameRunner()
+        {
+            Container.BindInterfacesAndSelfTo<GameRunner>().AsSingle().NonLazy();
+        }
+
         private void BindSceneLoader()
         {
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle().NonLazy();
@@ -30,16 +37,12 @@ namespace CodeBase.Infrastructure
 
         private void BindCoroutineRunner()
         {
-            var coroutineRunner = Container.InstantiatePrefabForComponent<CoroutineRunner>(_coroutineRunner);
-            Container.Bind<ICoroutineRunner>().FromInstance(coroutineRunner).AsSingle().NonLazy();
+            Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle().NonLazy();
         }
 
         private void BindGameStateMachine()
         {
-            
-            Container.Bind<GameStateMachine>().To<GameStateMachine>().AsSingle().NonLazy();
-            
-            //gameStateMachine.Enter<MenuState>();
+            Container.Bind<BaseStateMachine>().To<GameStateMachine>().AsSingle().NonLazy();
         }
 
         private void BindUiFactory()
