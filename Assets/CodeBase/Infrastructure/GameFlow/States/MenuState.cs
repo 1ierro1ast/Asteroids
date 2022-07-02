@@ -1,6 +1,7 @@
 ﻿using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.StateMachine;
+using CodeBase.Ui;
 using CodeBase.Ui.Popups;
 using UnityEngine;
 using Zenject;
@@ -11,15 +12,18 @@ namespace CodeBase.Infrastructure.GameFlow.States
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly IUiFactory _uiFactory;
+        private readonly LoadingCurtain _loadingCurtain;
         private readonly ISceneLoader _sceneLoader;
 
         private MenuPopup _menuPopup;
 
-        public MenuState(GameStateMachine gameStateMachine, ISceneLoader sceneLoader, IUiFactory uiFactory)
+        public MenuState(GameStateMachine gameStateMachine, ISceneLoader sceneLoader, IUiFactory uiFactory,
+            LoadingCurtain loadingCurtain)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _uiFactory = uiFactory;
+            _loadingCurtain = loadingCurtain;
         }
 
         public void Exit()
@@ -35,6 +39,7 @@ namespace CodeBase.Infrastructure.GameFlow.States
         {
             _menuPopup = _uiFactory.CreateMenuPopup();
             _menuPopup.PlayButton.onClick.AddListener(OnPlayButtonClick);
+            _loadingCurtain.Close();
         }
 
         private void OnPlayButtonClick()

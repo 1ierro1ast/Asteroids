@@ -16,7 +16,7 @@ namespace CodeBase.Infrastructure.GameFlow
         {
             States = new Dictionary<Type, IExitableState>()
             {
-                [typeof(MenuState)] = new MenuState(this, sceneLoader, uiFactory),
+                [typeof(MenuState)] = new MenuState(this, sceneLoader, uiFactory, loadingCurtain),
                 [typeof(LoadGameState)] = new LoadGameState(this, sceneLoader, loadingCurtain),
                 [typeof(GameplayState)] = new GameplayState(this, loadingCurtain),
                 [typeof(ResultState)] = new ResultState(this)

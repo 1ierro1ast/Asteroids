@@ -23,7 +23,7 @@ namespace CodeBase.Infrastructure.GameFlow.States
 
         public void Enter()
         {
-            //_loadingCurtain.Open();
+            _loadingCurtain.Open();
             _sceneLoader.LoadScene("GameScene", onLoaded: LoadSceneCallback);
         }
 

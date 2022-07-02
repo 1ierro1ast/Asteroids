@@ -22,7 +22,7 @@ namespace CodeBase.Infrastructure.GameFlow.States
         public void Enter()
         {
             Debug.Log("Gameplay here");
-            //_loadingCurtain.Close();
+            _loadingCurtain.Close();
         }
     }
 }
