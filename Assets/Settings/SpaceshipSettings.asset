@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa41003635d485fbc1df9b5a54856c3, type: 3}
   m_Name: SpaceshipSettings
   m_EditorClassIdentifier: 
-  _speed: 1.2
+  <Speed>k__BackingField: 0.8
+  <Health>k__BackingField: 100

@@ -2,20 +2,20 @@
 
 namespace CodeBase.GamePlay.Weapons
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
     {
-        private CharacterController _characterController;
+        private Rigidbody _rigidbody;
         private float _speed;
         
         private void Awake()
         {
-            _characterController = GetComponent<CharacterController>();
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            _characterController.Move(Vector3.right * _speed);
+            _rigidbody.AddForce(Vector3.right * _speed, ForceMode.VelocityChange);
         }
 
         public void SetSpeed(float speed)

@@ -1,44 +1,49 @@
-﻿using System;
-using CodeBase.GamePlay.Player;
+﻿using CodeBase.GamePlay.Player;
 using CodeBase.GamePlay.Weapons;
+using CodeBase.Infrastructure.Services;
 using UnityEngine;
 
 namespace CodeBase.GamePlay.Asteroids
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Rigidbody))]
     public class Asteroid : MonoBehaviour
     {
-        private CharacterController _characterController;
+        private IGameVariables _gameVariables;
+        private Rigidbody _rigidbody;
         private float _speed;
         private float _damage;
 
         private void Awake()
         {
-            _characterController = GetComponent<CharacterController>();
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
-        public void SetParameters(float speed, float size, float damage)
+        public void SetParameters(float speed, float size, float damage, IGameVariables gameVariables)
         {
+            _gameVariables = gameVariables;
             _speed = speed;
             _damage = damage;
             transform.localScale = new Vector3(size, size, size);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            _characterController.Move(Vector3.left * _speed);
+            _rigidbody.AddForce(Vector3.left * _speed, ForceMode.VelocityChange);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Bullet bullet))
             {
+                _gameVariables.AddScores();
+                Destroy(bullet);
                 Destroy(gameObject);
             }
 
             if (other.TryGetComponent(out Spaceship spaceship))
             {
                 spaceship.SetDamage(_damage);
+                Destroy(gameObject);
             }
         }
     }

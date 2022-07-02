@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113be935b45b4bf7b42bc1950427f5f2, type: 3}
   m_Name: AsteroidsSettings
   m_EditorClassIdentifier: 
+  <AsteroidPrefab>k__BackingField: {fileID: 8651935290445262948, guid: 5a47c3ff71f44324fb8730d3f536e68d, type: 3}
+  <AsteroidsSpawnRange>k__BackingField: 7
+  <AsteroidsSpawnDelay>k__BackingField: 1
+  <MinAsteroidDamage>k__BackingField: 5
+  <MaxAsteroidDamage>k__BackingField: 15
+  <MinAsteroidSpeed>k__BackingField: 0.2
+  <MaxAsteroidSpeed>k__BackingField: 0.5
+  <MinAsteroidSize>k__BackingField: 1
+  <MaxAsteroidSize>k__BackingField: 3

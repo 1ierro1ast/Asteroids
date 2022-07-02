@@ -14,14 +14,13 @@ namespace CodeBase.Infrastructure.Installers
         public override void InstallBindings()
         {
             BindSpaceship();
-            //BindAsteroidsSpawn();
-            //BindGameBuilder();
+            BindAsteroidsSpawn();
             BindInputHandler();
             BindAsteroidsFactory();
-            BindBulletFavtory();
+            BindBulletFactory();
         }
 
-        private void BindBulletFavtory()
+        private void BindBulletFactory()
         {
             Container
                 .Bind<IBulletFactory>()
@@ -30,10 +29,14 @@ namespace CodeBase.Infrastructure.Installers
                 .NonLazy();
         }
 
-        /*private void BindAsteroidsSpawn()
+        private void BindAsteroidsSpawn()
         {
-            throw new System.NotImplementedException();
-        }*/
+            Container
+                .Bind<AsteroidsSpawn>()
+                .FromComponentInNewPrefab(_asteroidsSpawn)
+                .AsSingle()
+                .NonLazy();
+        }
 
         private void BindSpaceship()
         {

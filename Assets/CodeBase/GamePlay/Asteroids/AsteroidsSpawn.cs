@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using CodeBase.Infrastructure.Factories;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace CodeBase.GamePlay.Asteroids
 {
@@ -15,6 +17,11 @@ namespace CodeBase.GamePlay.Asteroids
         {
             _asteroidsFactory = asteroidsFactory;
             _asteroidsSettings = asteroidsSettings;
+        }
+
+        private void OnEnable()
+        {
+            StartCoroutine(AsteroidSpawnCoroutine());
         }
 
         private IEnumerator AsteroidSpawnCoroutine()

@@ -13,17 +13,19 @@ namespace CodeBase.Infrastructure.GameFlow.States
         private readonly GameStateMachine _gameStateMachine;
         private readonly IUiFactory _uiFactory;
         private readonly LoadingCurtain _loadingCurtain;
+        private readonly IGameVariables _gameVariables;
         private readonly ISceneLoader _sceneLoader;
 
         private MenuPopup _menuPopup;
 
         public MenuState(GameStateMachine gameStateMachine, ISceneLoader sceneLoader, IUiFactory uiFactory,
-            LoadingCurtain loadingCurtain)
+            LoadingCurtain loadingCurtain, IGameVariables gameVariables)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _uiFactory = uiFactory;
             _loadingCurtain = loadingCurtain;
+            _gameVariables = gameVariables;
         }
 
         public void Exit()
@@ -38,6 +40,7 @@ namespace CodeBase.Infrastructure.GameFlow.States
         private void LinkStartButton()
         {
             _menuPopup = _uiFactory.CreateMenuPopup();
+            _menuPopup.SetHignScore(_gameVariables.HighScore);
             _menuPopup.PlayButton.onClick.AddListener(OnPlayButtonClick);
             _loadingCurtain.Close();
         }

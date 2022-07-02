@@ -8,15 +8,17 @@ namespace CodeBase.GamePlay.Player
     public class Spaceship : MonoBehaviour
     {
         private float _health;
-        public event Action SpaceshipDestroyed;
-        public event Action<float> ChangeHealth;
+        private float _fullHealth;
+        public static event Action SpaceshipDestroyed;
+        public static event Action<float> ChangeHealth;
 
         [Inject]
         private void Construct(SpaceshipSettings spaceshipSettings)
         {
             _health = spaceshipSettings.Health;
+            _fullHealth = spaceshipSettings.Health;
         }
-        
+
         public void SetDamage(float damage)
         {
             _health -= damage;
@@ -26,7 +28,7 @@ namespace CodeBase.GamePlay.Player
                 SpaceshipDestroyed?.Invoke();
             }
 
-            ChangeHealth?.Invoke(_health);
+            ChangeHealth?.Invoke(_health / _fullHealth);
         }
     }
 }
